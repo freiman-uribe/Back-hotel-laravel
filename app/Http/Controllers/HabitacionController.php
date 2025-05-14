@@ -13,9 +13,9 @@ class HabitacionController extends Controller
             ->with(['tipoHabitacion.acomodaciones:id,nombre', 'acomodacion:id,nombre'])
             ->get();
 
-        // if ($habitaciones->isEmpty()) {
-        //     return response()->json(['message' => 'No se encontraron habitaciones para este hotel.'], 404);
-        // }
+        if ($habitaciones->isEmpty()) {
+            return response()->json(['message' => 'No se encontraron habitaciones para este hotel.', 'data' => []]);
+        }
 
         return response()->json($habitaciones);
     }

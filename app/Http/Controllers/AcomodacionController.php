@@ -12,9 +12,9 @@ class AcomodacionController extends Controller
     {
         $acomodaciones = Acomodacion::where('hotel_id', $hotelId)->get();
 
-        // if ($acomodaciones->isEmpty()) {
-        //     return response()->json(['message' => 'No se encontraron acomodaciones para este hotel.'], 404);
-        // }
+        if ($acomodaciones->isEmpty()) {
+            return response()->json(['message' => 'No se encontraron acomodaciones para este hotel.'], 404);
+        }
 
         return response()->json($acomodaciones);
     }
@@ -23,9 +23,9 @@ class AcomodacionController extends Controller
     {
         $acomodacion = Acomodacion::find($id);
 
-        // if (!$acomodacion) {
-        //     return response()->json(['message' => 'Acomodación no encontrada.'], 404);
-        // }
+        if (!$acomodacion) {
+            return response()->json(['message' => 'Acomodación no encontrada.'], 404);
+        }
 
         return response()->json($acomodacion);
     }
